@@ -414,6 +414,7 @@
             margin-top: 5px;
         }
 
+
         /* ========== 饮食页样式 ========== */
         #diet-page {
             background: #f4f7f6;
@@ -457,111 +458,220 @@
         .diet-section {
             display: none;
             padding: 20px;
-            max-width: 600px;
+            max-width: 900px;
             margin: 0 auto;
             animation: fadeIn 0.4s ease;
         }
 
         .diet-section.active { display: block; }
 
-        .diet-card {
+        /* 饮食计划表格 */
+        .diet-table-wrapper {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+
+        .diet-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .diet-table thead th {
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .diet-table thead tr {
+            background: #f8f9fa;
+            color: #555;
+        }
+
+        .diet-table tbody td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+
+        .diet-table tbody tr:last-child td { border-bottom: none; }
+
+        .diet-table tbody tr:hover { background: #f8faf8; }
+
+        .diet-table tbody tr.rest-row { background: #f0f7ff; }
+        .diet-table tbody tr.rest-row:hover { background: #e8f0fe; }
+
+        .diet-table tbody tr.aerobic-row { background: #fff8f0; }
+        .diet-table tbody tr.aerobic-row:hover { background: #fff3e0; }
+
+        /* 类型标签 */
+        .type-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .badge-leg { background: #e8f5e9; color: #2e7d32; }
+        .badge-chest { background: #e3f2fd; color: #1565c0; }
+        .badge-shoulder { background: #fff3e0; color: #e65100; }
+        .badge-rest { background: #eceff1; color: #546e7a; }
+        .badge-aerobic { background: #fce4ec; color: #c62828; }
+
+        /* 数据高亮 */
+        .data-highlight {
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .data-cal { color: #e65100; }
+        .data-protein { color: #1565c0; }
+
+        /* 连字符号 */
+        .dash { color: #bbb; font-size: 18px; }
+
+        /* 休息日表格样式 */
+        .rest-table-wrapper {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+
+        .rest-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .rest-table thead th {
+            padding: 16px;
+            text-align: left;
+            background: #f0f7ff;
+            color: #1565c0;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #bbdefb;
+        }
+
+        .rest-table tbody td {
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .rest-table tbody tr:last-child td { border-bottom: none; }
+        .rest-table tbody tr:hover { background: #f8fbff; }
+
+        .rest-table .section-label {
+            font-weight: 700;
+            color: #1565c0;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rest-table .section-content {
+            color: #333;
+        }
+
+        .rest-table .macro-cell {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* 提示卡片 */
+        .tip-card {
             background: #fff;
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-top: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border-left: 5px solid transparent;
+            border-left: 4px solid #FF9800;
         }
 
-        .diet-card.training { border-left-color: #4CAF50; }
-        .diet-card.rest { border-left-color: #2196F3; }
-
-        .meal-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .tip-card h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
+            gap: 8px;
         }
 
-        .meal-title span {
-            display: inline-block;
-            width: 8px;
-            height: 20px;
-            border-radius: 4px;
-            margin-right: 10px;
+        .tip-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .diet-card.training .meal-title span { background: #4CAF50; }
-        .diet-card.rest .meal-title span { background: #2196F3; }
-
-        .food-list { list-style: none; padding: 0; }
-        .food-list li {
-            margin-bottom: 12px;
-            line-height: 1.6;
+        .tip-card ul li {
+            padding: 6px 0;
+            padding-left: 18px;
             position: relative;
-            padding-left: 15px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
         }
-        .food-list li::before {
+
+        .tip-card ul li::before {
             content: "•";
             color: #FF9800;
             font-weight: bold;
             position: absolute;
             left: 0;
         }
-        .food-name { font-weight: 600; color: var(--text-main); }
-        .food-desc {
-            font-size: 14px;
-            color: var(--text-sub);
-            display: block;
-            margin-top: 4px;
-        }
-        .highlight { color: #FF9800; font-weight: bold; }
-        .tip {
-            font-size: 13px;
-            color: #888;
-            background: #f0f0f0;
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        /* 热量计算器 */
-        .calculator {
-            background: #fff;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .calculator h3 {
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-
-        .calc-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .calc-row:last-child { border-bottom: none; }
-
-        .calc-total {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--accent);
-            text-align: center;
-            padding: 15px;
-            background: #fff3e0;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
 
         /* ========== 手机适配 ========== */
+        @media (max-width: 768px) {
+            #home-page #header h1 { font-size: 2em; }
+            #home-page #content-card { flex-direction: column; min-height: auto; }
+            #home-page #card-text { flex: auto; width: 100%; padding: 30px 20px; border-right: none; border-bottom: 1px solid #f0f0f0; }
+            #home-page #card-image { flex: auto; width: 100%; min-height: 250px; }
+            #home-page #header { margin-top: 50px; }
+
+            .gym-nav-btn { font-size: 12px; padding: 10px 0; }
+            .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 10px; }
+            .stat-card { padding: 10px; }
+            .stat-card .stat-value { font-size: 20px; }
+
+            .exercise-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .exercise-item .weight-input { width: 100%; }
+
+            .diet-table, .rest-table { font-size: 12px; }
+            .diet-table thead th,
+            .diet-table tbody td,
+            .rest-table thead th,
+            .rest-table tbody td { padding: 10px 8px; }
+
+            .type-badge { padding: 3px 8px; font-size: 11px; }
+        }
+
+        @media (max-width: 480px) {
+            .diet-table-wrapper, .rest-table-wrapper {
+                border-radius: 12px;
+                overflow-x: auto;
+            }
+            .diet-table { min-width: 700px; }
+            .rest-table { min-width: 500px; }
+        }
+
         @media (max-width: 768px) {
             #home-page #header h1 { font-size: 2em; }
             #home-page #content-card { flex-direction: column; min-height: auto; }
@@ -867,188 +977,163 @@
 
         <!-- 训练日内容 -->
         <div id="training" class="diet-section active">
-            <h1>🏋️ 训练日饮食计划</h1>
+            <h1 style="font-size: 22px; margin-bottom: 20px; color: #2e7d32;">🏋️ 训练日饮食计划</h1>
 
-            <!-- 热量计算器 -->
-            <div class="calculator">
-                <h3>📊 今日热量统计</h3>
-                <div class="calc-row">
-                    <span>早午餐（鸡腿x2+米饭+青菜）</span>
-                    <span>~650 kcal</span>
-                </div>
-                <div class="calc-row">
-                    <span>练前（碱水包+肌酸）</span>
-                    <span>~160 kcal</span>
-                </div>
-                <div class="calc-row">
-                    <span>练后（蛋白粉+香蕉+碱水包）</span>
-                    <span>~380 kcal</span>
-                </div>
-                <div class="calc-row">
-                    <span>晚餐（鸡腿+鸭胗+蔬菜+碱水包）</span>
-                    <span>~520 kcal</span>
-                </div>
-                <div class="calc-total">
-                    总计：~1710 kcal | 蛋白质：~134g
-                </div>
+            <div class="diet-table-wrapper">
+                <table class="diet-table">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>训练类型</th>
+                            <th>11:30 早午餐</th>
+                            <th>16:30 练前</th>
+                            <th>19:00 练后</th>
+                            <th>21:00 晚餐</th>
+                            <th style="text-align:center">总热量</th>
+                            <th style="text-align:center">蛋白质</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>周一</strong></td>
+                            <td><span class="type-badge badge-leg">练腿日</span></td>
+                            <td>鸡腿×2 + 米饭200g + 青菜</td>
+                            <td>碱水包 + 肌酸</td>
+                            <td>蛋白粉1.5勺 + 香蕉 + 碱水包</td>
+                            <td>鸡腿 + 鸭胗 + 蔬菜 + 碱水包</td>
+                            <td class="data-highlight data-cal" style="text-align:center">1710</td>
+                            <td class="data-highlight data-protein" style="text-align:center">134g</td>
+                        </tr>
+                        <tr class="aerobic-row">
+                            <td><strong>周二</strong></td>
+                            <td><span class="type-badge badge-shoulder">练肩臂</span></td>
+                            <td>鸡腿×2 + 米饭200g + 番茄炒蛋</td>
+                            <td>碱水包 + 肌酸</td>
+                            <td>蛋白粉1.5勺 + 香蕉 + 碱水包</td>
+                            <td>鸡腿 + 鸡蛋 + 蔬菜 + 碱水包</td>
+                            <td class="data-highlight data-cal" style="text-align:center">1750</td>
+                            <td class="data-highlight data-protein" style="text-align:center">138g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>周三</strong></td>
+                            <td><span class="type-badge badge-chest">练胸背</span></td>
+                            <td>鸡腿×2 + 米饭200g + 青菜</td>
+                            <td>碱水包 + 肌酸</td>
+                            <td>蛋白粉1.5勺 + 香蕉 + 碱水包</td>
+                            <td>鸭胗×2 + 蔬菜 + 米饭</td>
+                            <td class="data-highlight data-cal" style="text-align:center">1680</td>
+                            <td class="data-highlight data-protein" style="text-align:center">130g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>周四</strong></td>
+                            <td><span class="type-badge badge-leg">练腿日</span></td>
+                            <td>鸡腿×2 + 米饭200g + 青菜</td>
+                            <td>碱水包 + 肌酸</td>
+                            <td>蛋白粉1.5勺 + 香蕉 + 碱水包</td>
+                            <td>鸡腿 + 鸭胗 + 蔬菜 + 碱水包</td>
+                            <td class="data-highlight data-cal" style="text-align:center">1710</td>
+                            <td class="data-highlight data-protein" style="text-align:center">134g</td>
+                        </tr>
+                        <tr class="rest-row">
+                            <td><strong>周五</strong></td>
+                            <td><span class="type-badge badge-rest">休息日</span></td>
+                            <td>鸡腿×1 + 鸭胗×1 + 米饭150g + 青菜</td>
+                            <td class="dash">—</td>
+                            <td class="dash">—</td>
+                            <td>鸡腿 + 蔬菜 + 碱水包</td>
+                            <td class="data-highlight data-cal" style="text-align:center">1450</td>
+                            <td class="data-highlight data-protein" style="text-align:center">108g</td>
+                        </tr>
+                        <tr class="rest-row">
+                            <td><strong>周六</strong></td>
+                            <td><span class="type-badge badge-rest">休息日</span></td>
+                            <td>鸡腿×1 + 米饭150g + 青菜</td>
+                            <td class="dash">—</td>
+                            <td class="dash">—</td>
+                            <td>鸡腿 + 蔬菜 + 碱水包</td>
+                            <td class="data-highlight data-cal" style="text-align:center">1380</td>
+                            <td class="data-highlight data-protein" style="text-align:center">105g</td>
+                        </tr>
+                        <tr class="aerobic-row">
+                            <td><strong>周日</strong></td>
+                            <td><span class="type-badge badge-aerobic">有氧日</span></td>
+                            <td>鸡腿×1 + 米饭150g + 青菜</td>
+                            <td class="dash">—</td>
+                            <td>蛋白粉1勺</td>
+                            <td>鸡腿 + 蔬菜 + 碱水包</td>
+                            <td class="data-highlight data-cal" style="text-align:center">1520</td>
+                            <td class="data-highlight data-protein" style="text-align:center">115g</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="diet-card training">
-                <div class="meal-title"><span></span>早午餐 (11:30)</div>
-                <ul class="food-list">
-                    <li>
-                        <div class="food-name">主食：米饭 200g</div>
-                        <div class="food-desc">大约 <span class="highlight">2个拳头</span>大小</div>
-                    </li>
-                    <li>
-                        <div class="food-name">蛋白质：去皮鸡腿 x2</div>
-                        <div class="food-desc">卤味店购买，<span class="highlight">必须去皮</span>，约300g</div>
-                    </li>
-                    <li>
-                        <div class="food-name">蔬菜：绿色蔬菜</div>
-                        <div class="food-desc">食堂清炒蔬菜，<span class="highlight">2个拳头</span>以上</div>
-                    </li>
-                </ul>
-                <div class="tip">
-                    <strong>食堂技巧：</strong>如果菜太油，准备一碗水涮一下再吃
-                </div>
-            </div>
-
-            <div class="diet-card training">
-                <div class="meal-title"><span></span>练前加餐 (16:30)</div>
-                <ul class="food-list">
-                    <li>
-                        <div class="food-name">全麦碱水面包 x1</div>
-                        <div class="food-desc">缓释碳水，稳定供能，防训练低血糖</div>
-                    </li>
-                    <li>
-                        <div class="food-name">肌酸 3-5g</div>
-                        <div class="food-desc">维持期剂量，训练前最佳</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="diet-card training">
-                <div class="meal-title"><span></span>练后黄金餐 (19:00)</div>
-                <ul class="food-list">
-                    <li>
-                        <div class="food-name">蛋白粉 1.5勺</div>
-                        <div class="food-desc">快速吸收，立即启动肌肉修复</div>
-                    </li>
-                    <li>
-                        <div class="food-name">香蕉 x1</div>
-                        <div class="food-desc">快碳补充糖原，<span class="highlight">训练后30分钟内</span></div>
-                    </li>
-                    <li>
-                        <div class="food-name">全麦碱水面包 x1</div>
-                        <div class="food-desc">持续供能，回宿舍路上吃</div>
-                    </li>
-                </ul>
-                <div class="tip">
-                    <strong>关键：</strong>这顿必须在训练后30分钟内完成！先喝蛋白粉，再吃香蕉和面包
-                </div>
-            </div>
-
-            <div class="diet-card training">
-                <div class="meal-title"><span></span>晚餐 (21:00)</div>
-                <ul class="food-list">
-                    <li>
-                        <div class="food-name">蛋白质：去皮鸡腿 x1 + 鸭胗 x1</div>
-                        <div class="food-desc">卤味店购买，约200g蛋白质</div>
-                    </li>
-                    <li>
-                        <div class="food-name">蔬菜：大量绿色蔬菜</div>
-                        <div class="food-desc">黄瓜/番茄/食堂青菜，不限量</div>
-                    </li>
-                    <li>
-                        <div class="food-name">主食：全麦碱水面包 x1</div>
-                        <div class="food-desc">缓释碳水，睡前不饿</div>
-                    </li>
+            <div class="tip-card">
+                <h3>💡 饮食执行提醒</h3>
+                <ul>
+                    <li>训练日必须在练后 <strong>30分钟内</strong> 补充蛋白粉 + 快碳</li>
+                    <li>休息日碳水减半，晚餐碱水包可根据饥饿感取舍</li>
+                    <li>所有鸡腿必须去皮，菜太油用水涮一下</li>
+                    <li>保证每天饮水 2L 以上</li>
                 </ul>
             </div>
         </div>
 
         <!-- 休息日内容 -->
         <div id="rest" class="diet-section">
-            <h1>🧘 休息日饮食计划</h1>
+            <h1 style="font-size: 22px; margin-bottom: 20px; color: #1565c0;">🧘 休息日饮食计划</h1>
+            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">周五、周六为休息日，碳水减半，无需练前练后补充</p>
 
-            <div class="calculator">
-                <h3>📊 今日热量统计</h3>
-                <div class="calc-row">
-                    <span>早午餐（鸡腿+鸭胗+米饭+青菜）</span>
-                    <span>~480 kcal</span>
-                </div>
-                <div class="calc-row">
-                    <span>晚餐（鸡腿+蔬菜+碱水包）</span>
-                    <span>~380 kcal</span>
-                </div>
-                <div class="calc-total" style="background: #e3f2fd; color: #2196F3;">
-                    总计：~1450 kcal | 蛋白质：~108g
-                </div>
+            <div class="rest-table-wrapper">
+                <table class="rest-table">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>11:30 早午餐</th>
+                            <th>21:00 晚餐</th>
+                            <th style="text-align:center">总热量</th>
+                            <th style="text-align:center">蛋白质</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>周五</strong><br><span class="type-badge badge-rest" style="margin-top:6px">休息日</span></td>
+                            <td>
+                                <span class="section-label">早午餐</span>
+                                <span class="section-content">鸡腿×1 + 鸭胗×1 + 米饭150g + 青菜</span>
+                            </td>
+                            <td>
+                                <span class="section-label">晚餐</span>
+                                <span class="section-content">鸡腿×1 + 蔬菜 + 碱水包×1</span>
+                            </td>
+                            <td class="macro-cell data-cal">1450</td>
+                            <td class="macro-cell data-protein">108g</td>
+                        </tr>
+                        <tr>
+                            <td><strong>周六</strong><br><span class="type-badge badge-rest" style="margin-top:6px">休息日</span></td>
+                            <td>
+                                <span class="section-label">早午餐</span>
+                                <span class="section-content">鸡腿×1 + 米饭150g + 青菜</span>
+                            </td>
+                            <td>
+                                <span class="section-label">晚餐</span>
+                                <span class="section-content">鸡腿×1 + 蔬菜 + 碱水包×1（可选）</span>
+                            </td>
+                            <td class="macro-cell data-cal">1380</td>
+                            <td class="macro-cell data-protein">105g</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <div class="diet-card rest">
-                <div class="meal-title"><span></span>早午餐 (11:30)</div>
-                <ul class="food-list">
-                    <li>
-                        <div class="food-name">主食：米饭 150g</div>
-                        <div class="food-desc">比训练日少，<span class="highlight">1.5个拳头</span></div>
-                    </li>
-                    <li>
-                        <div class="food-name">蛋白质：去皮鸡腿 x1 + 鸭胗 x1</div>
-                        <div class="food-desc">减量，约200g</div>
-                    </li>
-                    <li>
-                        <div class="food-name">蔬菜：绿色蔬菜</div>
-                        <div class="food-desc">不限量，多吃</div>
-                    </li>
+            <div class="tip-card" style="border-left-color: #2196F3;">
+                <h3>📋 休息日执行原则</h3>
+                <ul>
+                    <li>无训练消耗低，<strong>必须严格控制碳水</strong>，米饭减至150g</li>
+                    <li>如果晚餐感觉不饿，可以去掉碱水包，只吃鸡腿和蔬菜</li>
+                    <li>多喝水，保证睡眠 7-8 小时，让肌肉充分恢复</li>
+                    <li>可以进行轻度拉伸或散步，促进血液循环</li>
                 </ul>
-            </div>
-
-            <div class="diet-card rest">
-                <div class="meal-title"><span></span>晚餐 (21:00)</div>
-                <ul class="food-list">
-                    <li>
-                        <div class="food-name">蛋白质：去皮鸡腿 x1</div>
-                        <div class="food-desc">约150g</div>
-                    </li>
-                    <li>
-                        <div class="food-name">蔬菜：大量绿色蔬菜</div>
-                        <div class="food-desc">黄瓜/番茄/食堂青菜</div>
-                    </li>
-                    <li>
-                        <div class="food-name">主食：全麦碱水面包 x1</div>
-                        <div class="food-desc">减量，防止脂肪堆积</div>
-                    </li>
-                </ul>
-                <div class="tip">
-                    <strong>休息日原则：</strong>无训练消耗低，必须严格控制碳水。如果感觉不饿，晚餐可以去掉碱水包，只吃鸡腿和蔬菜。
-                </div>
-            </div>
-
-            <div class="diet-card rest">
-                <div class="meal-title"><span></span>🛒 每周采购清单</div>
-                <ul class="food-list">
-                    <li>
-                        <div class="food-name">卤味店</div>
-                        <div class="food-desc">去皮鸡腿 12个 + 鸭胗 8个（约90元）</div>
-                    </li>
-                    <li>
-                        <div class="food-name">早餐铺</div>
-                        <div class="food-desc">茶叶蛋 7个（应急用，约10元）</div>
-                    </li>
-                    <li>
-                        <div class="food-name">自备</div>
-                        <div class="food-desc">碱水面包 14个 + 蛋白粉 + 肌酸</div>
-                    </li>
-                    <li>
-                        <div class="food-name">水果店</div>
-                        <div class="food-desc">香蕉 5根（训练日用，约15元）</div>
-                    </li>
-                </ul>
-                <div class="tip">
-                    <strong>总计：</strong>约195元/周，平均每天28元
-                </div>
             </div>
         </div>
     </div>
