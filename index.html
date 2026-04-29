@@ -408,10 +408,33 @@
             color: var(--accent);
         }
 
+        .stat-card .stat-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent);
+            text-align: center;
+            font-family: inherit;
+            padding: 0;
+            outline: none;
+            border-bottom: 2px dashed #444;
+            transition: border-color 0.3s;
+        }
+
+        .stat-card .stat-input:focus {
+            border-bottom-color: var(--accent);
+        }
+
+        .stat-card .stat-input::placeholder {
+            color: #555;
+        }
+
         .stat-card .stat-label {
             font-size: 12px;
             color: var(--text-sub);
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
 
@@ -768,15 +791,15 @@
         <!-- 训练数据统计 -->
         <div class="stats-bar">
             <div class="stat-card">
-                <div class="stat-value">81kg</div>
+                <input type="text" class="stat-input" id="stat-weight" placeholder="--kg" value="81kg">
                 <div class="stat-label">当前体重</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">100kg</div>
+                <input type="text" class="stat-input" id="stat-squat" placeholder="--kg" value="100kg">
                 <div class="stat-label">深蹲PR</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">60kg</div>
+                <input type="text" class="stat-input" id="stat-bench" placeholder="--kg" value="60kg">
                 <div class="stat-label">卧推PR</div>
             </div>
         </div>
@@ -1157,6 +1180,58 @@
     </div>
 
     <script>
+        // ========== 训练数据持久化 (localStorage) ==========
+        (function() {
+            const keys = {
+                weight: 'theking_stat_weight',
+                squat: 'theking_stat_squat',
+                bench: 'theking_stat_bench'
+            };
+
+            function loadStats() {
+                const w = localStorage.getItem(keys.weight);
+                const s = localStorage.getItem(keys.squat);
+                const b = localStorage.getItem(keys.bench);
+                if (w) document.getElementById('stat-weight').value = w;
+                if (s) document.getElementById('stat-squat').value = s;
+                if (b) document.getElementById('stat-bench').value = b;
+            }
+
+            function saveStat(key, inputId) {
+                const el = document.getElementById(inputId);
+                if (!el) return;
+                el.addEventListener('input', function() {
+                    localStorage.setItem(key, el.value);
+                });
+                el.addEventListener('blur', function() {
+                    // 失去焦点时去除前后空白
+                    el.value = el.value.trim();
+                    localStorage.setItem(key, el.value);
+                });
+                // 回车也触发保存
+                el.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        el.blur();
+                    }
+                });
+            }
+
+            // 页面加载完成后执行
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    loadStats();
+                    saveStat(keys.weight, 'stat-weight');
+                    saveStat(keys.squat, 'stat-squat');
+                    saveStat(keys.bench, 'stat-bench');
+                });
+            } else {
+                loadStats();
+                saveStat(keys.weight, 'stat-weight');
+                saveStat(keys.squat, 'stat-squat');
+                saveStat(keys.bench, 'stat-bench');
+            }
+        })();
+
         // ========== 菜单控制 ==========
         function toggleMenu() {
             const menu = document.getElementById('side-menu');
